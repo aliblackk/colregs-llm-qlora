@@ -124,8 +124,6 @@ ROUGE is a lexical overlap metric and does not fully measure semantic correctnes
 
 The evaluation was performed on 20 held-out examples, so the results may not fully represent performance on a larger or more diverse COLREGS dataset.
 
-The goal of the project is to demonstrate the complete fine-tuning workflow rather than achieve a perfect benchmark score.
-
 
 ## Reproducibility
 
