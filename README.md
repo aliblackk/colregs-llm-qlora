@@ -90,15 +90,17 @@ The W&B run contains the training loss curve and other training metrics.
 
 ## Evaluation
 
-The fine-tuned model is compared against the original `Qwen/Qwen2.5-7B-Instruct` model on 20 held-out examples.
+I compared the original `Qwen/Qwen2.5-7B-Instruct` model with the fine-tuned model on 20 held-out examples.
 
 ### Metrics
+
+I used:
 
 * ROUGE-1
 * ROUGE-2
 * ROUGE-L
 
-ROUGE was selected because it is simple, reproducible, and explicitly allowed by the assignment requirements.
+I chose ROUGE because it is easy to calculate and it is one of the metrics allowed in the assignment.
 
 ### Results
 
@@ -108,9 +110,25 @@ ROUGE was selected because it is simple, reproducible, and explicitly allowed by
 | Fine-tuned Model |  0.9433 |  0.9241 |  0.9433 |
 | Improvement      |  0.0000 |  0.0000 |  0.0000 |
 
-The fine-tuned model achieved the same ROUGE scores as the base model on the selected evaluation subset. Therefore, fine-tuning did not provide a measurable improvement according to ROUGE in this experiment.
+The results are the same for both models. So, based on ROUGE, I did not see any improvement after fine-tuning.
 
-Evaluation results are stored in:
+### Why are the results the same?
+
+I think the main reason is that `Qwen/Qwen2.5-7B-Instruct` is already a strong instruction-following model. The COLREGS dataset mostly contains multiple-choice questions with short answers, for example `Choice D: in distress`. The base model can already handle this type of task quite well.
+
+Another reason is the small evaluation set. I used only 20 examples, so the difference between the models may simply be too small to see in this experiment.
+
+Also, ROUGE only looks at the overlap between the generated answer and the reference answer. It does not really measure whether the model understands the COLREGS rule better.
+
+So I would not say that the fine-tuning failed. It just did not give a measurable improvement with this particular evaluation setup.
+
+### Limitations
+
+The main limitation is the small evaluation set of 20 examples. A larger test set would give more reliable results.
+
+Another limitation is the ROUGE metric itself. Since the answers are short, even a small change in the generated text can affect the score. A semantic metric such as BERTScore or an LLM-based evaluation could give a different picture.
+
+The evaluation results are saved in:
 
 `results/evaluation_results.json`
 
@@ -118,11 +136,6 @@ and:
 
 `results/evaluation_summary.csv`
 
-## Limitations
-
-ROUGE is a lexical overlap metric and does not fully measure semantic correctness. Therefore, the quantitative results should be interpreted together with qualitative inspection of generated answers.
-
-The evaluation was performed on 20 held-out examples, so the results may not fully represent performance on a larger or more diverse COLREGS dataset.
 
 
 ## Reproducibility
