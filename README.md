@@ -7,6 +7,7 @@ Fine-tuning of Qwen/Qwen2.5-7B-Instruct for answering COLREGS (International Reg
 ```text
 colregs-llm-project/
 ├── README.md
+├── col_regs.ipynb
 ├── requirements.txt
 ├── data/
 │   ├── dataset.jsonl
