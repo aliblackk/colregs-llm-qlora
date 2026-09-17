@@ -89,29 +89,42 @@ The W&B run contains the training loss curve and other training metrics.
 
 ## Evaluation
 
-The fine-tuned model is compared against the original Qwen/Qwen2.5-7B-Instruct model on 20 held-out examples.
+The fine-tuned model is compared against the original `Qwen/Qwen2.5-7B-Instruct` model on 20 held-out examples.
 
-Metrics:
+### Metrics
 
-- ROUGE-1
-- ROUGE-2
-- ROUGE-L
+* ROUGE-1
+* ROUGE-2
+* ROUGE-L
 
 ROUGE was selected because it is simple, reproducible, and explicitly allowed by the assignment requirements.
 
+### Results
+
+| Model            | ROUGE-1 | ROUGE-2 | ROUGE-L |
+| ---------------- | ------: | ------: | ------: |
+| Base Model       |  0.9433 |  0.9241 |  0.9433 |
+| Fine-tuned Model |  0.9433 |  0.9241 |  0.9433 |
+| Improvement      |  0.0000 |  0.0000 |  0.0000 |
+
+The fine-tuned model achieved the same ROUGE scores as the base model on the selected evaluation subset. Therefore, fine-tuning did not provide a measurable improvement according to ROUGE in this experiment.
+
 Evaluation results are stored in:
 
-results/evaluation_results.json
+`results/evaluation_results.json`
 
 and:
 
-results/evaluation_summary.csv
+`results/evaluation_summary.csv`
 
 ## Limitations
 
 ROUGE is a lexical overlap metric and does not fully measure semantic correctness. Therefore, the quantitative results should be interpreted together with qualitative inspection of generated answers.
 
+The evaluation was performed on 20 held-out examples, so the results may not fully represent performance on a larger or more diverse COLREGS dataset.
+
 The goal of the project is to demonstrate the complete fine-tuning workflow rather than achieve a perfect benchmark score.
+
 
 ## Reproducibility
 
